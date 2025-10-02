@@ -1,0 +1,265 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #9face6);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.container {
+  background: #fff;
+  padding: 30px;
+  margin: 40px 0;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  width: 600px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: #444;
+  border-left: 4px solid #4CAF50;
+  padding-left: 8px;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-top: 12px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 6px rgba(76,175,80,0.4);
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+.col {
+  flex: 1;
+}
+
+#photoPreview {
+  margin-top: 10px;
+  text-align: center;
+}
+
+#photoPreview img {
+  max-width: 120px;
+  border-radius: 10px;
+  margin-top: 8px;
+  border: 3px solid #eee;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.summary {
+  width: 600px;
+  text-align: left;
+}
+
+#summary p {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border-left: 4px solid #4CAF50;
+}
+
+#summary img {
+  max-width: 150px;
+  border-radius: 8px;
+  margin: 10px 0;
+  border: 3px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Date input styling */
+.date-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-wrapper input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.date-wrapper input:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.4);
+  outline: none;
+}
+
+.date-wrapper::after {
+  content: "📅";
+  position: absolute;
+  right: 12px;
+  font-size: 18px;
+  color: #4CAF50;
+  pointer-events: none;
+}
+
+/* Custom Flatpickr look */
+.flatpickr-calendar {
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.flatpickr-day.today {
+  border: none;
+  background: #4CAF50;
+  color: white;
+  border-radius: 50%;
+}
+
+.flatpickr-day.selected {
+  background: #45a049 !important;
+  color: #fff !important;
+  border-radius: 50%;
+}
+
+/* Modal Background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s;
+}
+
+/* Modal Content */
+.modal-content {
+  background: #fff;
+  margin: 12% auto;
+  padding: 25px;
+  border-radius: 12px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  animation: popIn 0.3s ease;
+}
+
+.modal-content h2 {
+  color: #4CAF50;
+  margin-bottom: 15px;
+}
+
+.modal-content button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #4CAF50;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.modal-content button:hover {
+  background: #45a049;
+}
+
+/* Close Button */
+#closeModal {
+  float: right;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #999;
+}
+
+#closeModal:hover {
+  color: #333;
+}
+
+.password-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 30px; 
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/159/159604.png'); /* dark eye icon */
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

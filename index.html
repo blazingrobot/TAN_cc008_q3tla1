@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrollment Form</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+  <div class="container" id="formContainer">
+    <h2> Enrollment Form</h2>
+    <form id="enrollmentForm">
+
+      <div class="row">
+        <div class="col">
+          <label>First Name</label>
+          <input type="text" id="firstName" required>
+        </div>
+        <div class="col">
+          <label>Middle Name</label>
+          <input type="text" id="middleName">
+        </div>
+        <div class="col">
+          <label>Last Name</label>
+          <input type="text" id="lastName" required>
+        </div>
+      </div>
+
+      <label>Upload Photo</label>
+      <input type="file" id="photo" accept="image/*">
+      <div id="photoPreview"></div>
+
+      <div class="row">
+        <div class="col">
+          <label>Date of Birth</label>
+          <div class="date-wrapper">
+            <input type="text" id="dob" placeholder="Select your birthdate" required>
+          </div>
+        </div>
+        <div class="col">
+          <label>Birth Location</label>
+          <input type="text" id="birthLocation">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>Gender</label>
+          <select id="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>Civil Status</label>
+          <select id="civilStatus">
+            <option>Single</option>
+            <option>Married</option>
+            <option>Divorced</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>Nationality</label>
+          <input type="text" id="nationality">
+        </div>
+        <div class="col">
+          <label>Religion</label>
+          <input type="text" id="religion">
+        </div>
+      </div>
+
+      <label>Contact Number</label>
+      <input type="text" name="contact" id="contact" oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+
+
+      <label>Email Address</label>
+      <input type="email" id="email" required>
+
+      <label>Home Address</label>
+      <input type="text" id="homeAddress">
+
+      <h3>Emergency Contact</h3>
+      <div class="row">
+        <div class="col">
+          <label>Name</label>
+          <input type="text" id="emergencyName">
+        </div>
+        <div class="col">
+          <label>Relationship</label>
+          <input type="text" id="emergencyRelation">
+        </div>
+      </div>
+
+      <label>Contact Number</label>
+      <input type="text" name="contact" id="contact" oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+
+      <h3>Account Details</h3>
+      <label>Username</label>
+      <input type="text" id="username">
+
+      <div class="row">
+        <div class="col">
+          <label>Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" required>
+            <span class="toggle-eye" id="togglePassword"></span>
+          </div>
+        </div>
+        <div class="col">
+          <label>Confirm Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="confirmPassword" required>
+            <span class="toggle-eye" id="toggleConfirm"></span>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+<div class="container summary" id="summaryContainer" style="display:none;">
+  <h2>Enrollment Summary</h2>
+  <div id="summary"></div>
+  <div class="actions">
+    <button onclick="window.location.reload()">Back to Form</button>
+    <button id="doneBtn">Done</button>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div id="successModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal">&times;</span>
+    <h2>Enrollment Successful!</h2>
+    <p>Thank you for enrolling. Your information has been recorded.</p>
+    <button onclick="window.location.reload()">OK</button>
+  </div>
+</div>
+
+  <!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="script.js"></script>
+</body>
+</html>
