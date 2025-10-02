@@ -38,7 +38,7 @@ document.getElementById("enrollmentForm").addEventListener("submit", function(e)
     civilStatus: document.getElementById("civilStatus").value,
     nationality: document.getElementById("nationality").value,
     religion: document.getElementById("religion").value,
-    contactNumber: document.getElementById("contact").value, // fixed ID
+    contactNumber: document.getElementById("contact").value,
     email: document.getElementById("email").value,
     homeAddress: document.getElementById("homeAddress").value,
     emergencyName: document.getElementById("emergencyName").value,
@@ -53,31 +53,22 @@ document.getElementById("enrollmentForm").addEventListener("submit", function(e)
     const reader = new FileReader();
     reader.onload = function(e) {
       formData.photo = e.target.result; // base64
-      saveToPHP(formData);
+      saveToLocal(formData);
       showSummary(formData);
     };
     reader.readAsDataURL(photoInput.files[0]);
   } else {
     formData.photo = null;
-    saveToPHP(formData);
+    saveToLocal(formData);
     showSummary(formData);
   }
 });
 
-// Save to PHP backend (students.json)
-function saveToPHP(data) {
-  fetch("save.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  })
-  .then(res => res.json())
-  .then(response => {
-    console.log(response.message); 
-  })
-  .catch(err => console.error("Error saving data:", err));
+// Save data locally instead of backend
+function saveToLocal(data) {
+  // Store in localStorage (as JSON string)
+  localStorage.setItem("enrollmentData", JSON.stringify(data));
+  console.log("Data saved locally!");
 }
 
 // Show summary
@@ -94,9 +85,9 @@ function showSummary(data) {
     }
   }
 
-  document.getElementById("summary").innerHTML = summaryHTML;
   document.getElementById("formContainer").style.display = "none";
   document.getElementById("summaryContainer").style.display = "block";
+  document.getElementById("summary").innerHTML = summaryHTML;
 }
 
 // Capitalize first letter
@@ -134,9 +125,19 @@ const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
 
 document.getElementById("togglePassword").addEventListener("click", () => {
-  password.type = password.type === "password" ? "text" : "password";
+  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+  password.setAttribute('type', type);
+  
+  // Toggle eye icon
+  const eyeIcon = document.getElementById("togglePassword");
+  eyeIcon.style.filter = type === 'text' ? 'brightness(0.7)' : 'brightness(1)';
 });
 
 document.getElementById("toggleConfirm").addEventListener("click", () => {
-  confirmPassword.type = confirmPassword.type === "password" ? "text" : "password";
+  const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+  confirmPassword.setAttribute('type', type);
+  
+  // Toggle eye icon
+  const eyeIcon = document.getElementById("toggleConfirm");
+  eyeIcon.style.filter = type === 'text' ? 'brightness(0.7)' : 'brightness(1)';
 });
